@@ -1,0 +1,267 @@
+@model ExpensiveTransportViewModel
+@{
+
+}
+
+@await Component.InvokeAsync("Notyf")
+
+<head>
+    <style>
+        .bg-thead {
+            text-align: left;
+            background: #990000;
+            color: #fff
+        }
+
+        .calloutbg {
+            text-align: left;
+            background: #990000;
+            color: #fff
+        }
+    </style>
+</head>
+
+<body class="hold-transition sidebar-mini >
+    <section class=" content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="callout callout-warning calloutbg">
+                            <h5>CreateExpensiveTransport</h5>
+                            <p>รายงานค่าเดินทาง ผู้ใช้งานสามารถเลือกประเภทรถและวันที่ DOเริ่มต้น - DOสิ้นสุด จากนั้นกดค้นหา ข้อมูลรายงานมาจากการกดปุ่มเข้าไปทำรายการทำจ่ายค่าเดิน
+                            </p>
+                        </div>
+
+                        <form asp-action="EditExpensiveTransport" asp-controller="EditExpensiveTransport">
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label>DO</label>
+                                        <input asp-for="DoNumber" type="text" class="form-control" readonly>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label>Create On</label>
+                                        <input asp-for="ActualGidateSap" type="text" class="form-control" readonly>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <input asp-for="Factory" type="text" class="form-control" hidden>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label>Sold To</label>
+                                        <input asp-for="SoldTo" type="text" class="form-control" readonly>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label>SoldToName</label>
+                                        <input asp-for="SoldToName" type="text" class="form-control" readonly>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label>Ship To</label>
+                                        <input asp-for="EtshipTo" type="text" class="form-control" readonly>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label>ShipToName</label>
+                                        <input asp-for="EtshipToName" type="text" class="form-control" readonly>
+                                    </div>
+                                </div>                               
+
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label>ทะเบียนรถ</label>
+                                        <input asp-for="Transport" type="text" class="form-control" readonly>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label>ประเภทรถ</label>
+                                        <input asp-for="ShippingType" type="text" class="form-control" readonly>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label>ชื่อรถ</label>
+                                        <input asp-for="ShippingName" type="text" class="form-control" readonly>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label>TransportZone</label>
+                                        <input asp-for="EttransportZone" type="text" class="form-control" readonly>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label>TransportZoneName</label>
+                                        <input asp-for="EttransportZoneName" type="text" class="form-control" readonly>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <label>แก้ไขที่อยู่จัดส่งปลายทาง</label>
+                                    <br>
+                                    <a data-toggle="modal" data-target="#modal-Search" class="btn btn-info">
+                                        <div class="icon">
+                                            <i class="fas fa-search"></i>
+                                        </div>
+                                    </a>
+                                </div>
+
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label>ค่าเดินทาง</label>
+                                        <input asp-for="Etmptprice" type="text" class="form-control" readonly>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label>ค่าใช้จ่ายอื่นๆ</label>
+                                        <input asp-for="Etcfprice" type="text" class="form-control" readonly>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label>ราคารวม</label>
+                                        <input asp-for="Etamount" type="text" class="form-control" readonly>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <div class="form-group">
+                                        <label></label>
+                                        <button type="submit" class="btn btn-block btn-success">บันทึก</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="modal-Search">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">ค้นหา TransportZone</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <form asp-action="SearchShipTo" asp-controller="EditExpensiveTransport">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <div class="row">                           
+                            <div class="col-md-6 mt-2">
+                                <div class="input-group mb-5">
+
+                                    <input type="text" value="@TempData["txtNameShipTo"]"
+                                        placeholder="กรุณากรอกชื่อ TransportZone" class="form-control"
+                                        name="shipToZone">
+
+                                    <input value="@TempData["txtDO"]" name="txtEtautoId" type="text"
+                                        class="form-control" readonly hidden></input>
+
+                                    <div class="input-group-append">
+                                        <button type="submit" value="Search" class="btn btn-info"
+                                            onclick="Loading();">ค้นหา</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                    <div class="row">
+                        <div class="col-md-12">
+                            @{
+                                if (Model.dataDeliveryAll.Count > 0)
+                                {
+                                    <script type="text/javascript">
+                                        window.onload = function Showmodal() {
+                                            $('#modal-Search').modal("show");
+                                        }
+                                    </script>
+                                    <table class="table table-responsive-md">
+                                        <thead class="thead-light">
+                                            <tr>
+                                                <th>TransportZoneID</th>
+                                                <th>TransportZoneName</th>
+                                                <th>เลือก</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach (var item in Model.dataDeliveryAll)
+                                            {
+                                                <tr>
+                                                    <td>@item.ShipToZoneID</td>
+                                                    <td>@item.ShipToZone</td>
+                                                    <td><a onclick="Loading();" class="btn btn-outline-primary" asp-area=""
+                                                    asp-controller="EditExpensiveTransport" asp-action="EditExpensiveTransport1"
+                                                    asp-route-ShipToZoneID="@item.ShipToZoneID"
+                                                    asp-route-etautoId="@TempData["EtautoId"]"
+                                                    asp-route-ShipToZone="@item.ShipToZone">เลือก</a></td>
+                                                    
+
+                                                </tr>
+                                            }
+                                        </tbody>
+                                    </table>
+                                }
+                            }
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</body>

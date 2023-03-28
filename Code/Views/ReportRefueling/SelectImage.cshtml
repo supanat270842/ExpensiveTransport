@@ -1,0 +1,12 @@
+@model IEnumerable<ImagesViewModel>;
+
+@{
+    Layout = null;
+}
+<div>
+    @foreach (var item in Model)
+    {
+        <img src="data:image/jpeg;base64,@item.stfStreamId" alt="CCP" height="450" width="900">
+    }
+
+</div>

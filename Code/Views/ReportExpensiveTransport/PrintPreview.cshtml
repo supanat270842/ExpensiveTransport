@@ -1,0 +1,135 @@
+@model ExpensiveTransportViewModel
+@{
+    double sumEtamount = 0;
+    double sumEtcfprice = 0;
+    double sumEtmptprice = 0;
+
+}
+
+@await Component.InvokeAsync("Notyf")
+
+<body class="hold-transition sidebar-mini >
+    <section class=" content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-18">
+                <div class="card">
+                    <div class="container">
+                        <h5>ใบสรุปรายงานค่าเดินทาง วันที่ @ViewBag.StartDate - วันที่ @ViewBag.EndDate</h5>
+                    </div>
+
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-18">
+                                <div class="form-group">
+                                    <div class="card-body  table-responsive p-0" style="height: *;">
+                                        <table class="table table-bordered text-wrap">
+                                            <thead class="bg-thead">
+                                                <tr>
+                                                    <th style="width: 80px" class="text-center">NO.</th>
+                                                    <th style="width: 180px" class="text-center">Client</th>
+                                                    <th style="width: 180px" class="text-center">CreateOn</th>
+                                                    <th style="width: 180px" class="text-center">DO</th>
+                                                    <th style="width: 180px" class="text-center">Sold To</th>
+                                                    <th style="width: 180px" class="text-center">Ship To</th>
+                                                    <th style="width: 180px" class="text-center">ทะเบียน</th>
+                                                    <th style="width: 180px" class="text-center">ประเภทรถ</th>
+                                                    <th style="width: 180px" class="text-center">ค่าเดินทาง
+                                                    </th>
+                                                    <th style="width: 180px" class="text-center">ค่าใช้จ่ายอื่นๆ
+                                                    </th>
+                                                    <th style="width: 180px" class="text-center">ราคารวม</th>
+                                                    <th style="width: 180px" class="text-center">หมายเหตุ</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @{
+                                                    int i = 1;
+                                                    foreach (var item in (ViewBag.ExpensiveTransportViewModel as
+                                                                            IEnumerable<ExpensiveTransportViewModel>))
+                                                    {
+
+                                                        <tr>
+                                                            <td class="text-center">@i</td>
+                                                            <td class="text-center">@item.Client</td>
+                                                            <td class="text-center">@item.ActualGidateSap</td>
+                                                            <td class="text-center">@item.DoNumber</td>
+                                                            <td class="text-center">@item.SoldTo-@item.SoldToName</td>
+                                                            <td class="text-center">@item.EtshipTo-@item.EtshipToName</td>
+                                                            @if (!String.IsNullOrEmpty(@item.Transport))
+                                                            {
+                                                                <td class="text-center">@item.Transport</td>
+                                                            }
+                                                            else
+                                                            {
+                                                                <td class="text-center">-</td>
+                                                            }
+
+                                                            <td class="text-center">@item.ShippingType-@item.ShippingName
+                                                            </td>
+                                                            <td class="text-center">@item.Etmptprice</td>
+                                                            <td class="text-center">@item.Etcfprice</td>
+                                                            <td class="text-center">@item.Etamount</td>
+                                                            <td></td>
+                                                        </tr>
+
+                                                        sumEtmptprice += Convert.ToDouble(item.Etmptprice);
+                                                        sumEtcfprice += Convert.ToDouble(item.Etcfprice);
+                                                        sumEtamount += Convert.ToDouble(item.Etamount);
+                                                        i++;
+                                                    }
+
+                                                }
+
+                                            </tbody>
+                                            <tfoot>
+                                                <tr>
+                                                    <th colspan="11" style="width: 80px" class="text-center"></th>
+                                                    <th style="width: 180px" class="text-center"readonly hidden>
+                                                    </th>
+                                                    <th style="width: 180px" class="text-center"readonly hidden></th>
+                                                    <th style="width: 180px" class="text-center"readonly hidden>
+                                                    </th>
+                                                    <th style="width: 180px" class="text-center"readonly hidden>
+                                                    </th>
+                                                    <th style="width: 180px" class="text-center"readonly hidden>
+                                                    </th>
+                                                    <th style="width: 180px" class="text-center"readonly hidden>
+                                                    </th>
+                                                    <th style="width: 180px" class="text-center"readonly hidden>
+
+                                                    </th>
+                                                    <th style="width: 180px" class="text-center" readonly hidden>
+
+                                                    </th>
+                                                    <th style="width: 180px" class="text-center"readonly hidden>
+                                                    </th>
+                                                    <th style="width: 180px" class="text-center"readonly hidden>
+                                                    </th>
+                                                </tr>
+                                            </tfoot>
+                                            <tfoot>
+                                                <tr>
+                                                    <th colspan="8" class="text-right">Total
+                                                    </th>
+                                                    <td class="text-center">@sumEtmptprice.ToString("N2")
+                                                    </td>
+                                                    <td class="text-center">@sumEtcfprice.ToString("N2")
+                                                    </td>
+                                                    <td class="text-center">@sumEtamount.ToString("N2")</td>
+                                                    <th class="text-center">บาท
+                                                    </th>
+                                                </tr>
+                                            </tfoot>
+                                        </table>                                       
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</body>

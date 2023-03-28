@@ -1,0 +1,102 @@
+@model MappingViewModel
+@{
+
+}
+
+@await Component.InvokeAsync("Notyf")
+
+<head>
+    <style>
+        .bg-thead {
+            text-align: left;
+            background: #990000;
+            color: #fff
+        }
+
+        .calloutbg {
+            text-align: left;
+            background: #990000;
+            color: #fff
+        }
+    </style>
+</head>
+
+<body class="hold-transition sidebar-mini >
+    <section class=" content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="callout callout-warning calloutbg">
+                            <h5>CreateMappingAssetAndDTC</h5>
+                            <p>ผู้ใช้งานเลือก AssetID ที่ตรงกับ QRCode ที่อยู่บนรถคันนั้นๆและใส่หมายเลขเบอร์โทรศัพท์ที่เชื่อมกับกล่อง GPS ของทาง DTC จากนั้นระบบ
+                                จะนำเบอร์โทรศัพท์ไปหาเลข GPSID ที่ผูกกันไว้และจับคู่กับ AssetID ของทางเรา สามารถดูข้อมูลได้ที่หน้า MappingAssetAndDTC
+                            </p>
+                        </div>
+                        <form asp-action="Insert" asp-controller="MappingAsDTC">
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>AssetID [iGraud]</label>
+                                        <select asp-items="@ViewBag.MappingList" class="form-control select2"
+                                            id="dropdown" name="AssetId" style="width: 100%;">
+                                            <option selected="selected">กรุณาเลือก AssetID [iGraud]</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Sim Number</label>
+                                        <input asp-for="_simNo" type="text" class="form-control"
+                                            placeholder="กรอกหมายเลขเบอร์โทรศัพท์ที่เชื่อมกับกล่อง GPS ของทาง DTC"></input>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <div class="form-group">
+                                        <label> </label>
+                                        <button type="submit" class="btn btn-block btn-success"></a>บันทึก
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"
+        integrity="sha512-2ImtlRlf2VVmiGZsjm9bEyhjGW4dU7B6TNwh/hx/iSByxNENtj3WVE6o/9Lj4TJeVXPi4bnOIMXFIJJAeufa0A=="
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css"
+        integrity="sha512-nMNlpuaDPrqlEls3IX/Q56H36qvBASwb3ipuo3MxeWbsQB1881ox0cRv7UPTgBlriqoynt35KjEwgGUeUXIPnw=="
+        crossorigin="anonymous" />
+    <style>
+        .select2-selection__rendered {
+            line-height: 29px !important;
+
+        }
+
+        .select2-container .select2-selection--single {
+            height: 35px !important;
+            width: 100%;
+        }
+
+        .select2-selection__arrow {
+            height: 34px !important;
+        }
+    </style>
+    <script>
+        $("#dropdown").select2({
+        });
+    </script>
+
+</body >

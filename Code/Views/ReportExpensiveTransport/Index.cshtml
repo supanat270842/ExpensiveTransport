@@ -1,0 +1,266 @@
+@model ExpensiveTransportViewModel
+@{
+    double sumEtamount = 0;
+    double sumEtcfprice = 0;
+    double sumEtmptprice = 0;
+
+}
+
+@await Component.InvokeAsync("Notyf")
+
+<head>
+    <style>
+        .bg-thead {
+            text-align: left;
+            background: #990000;
+            color: #fff
+        }
+
+        .calloutbg {
+            text-align: left;
+            background: #990000;
+            color: #fff
+        }
+    </style>
+</head>
+
+<body class="hold-transition sidebar-mini >
+    <section class=" content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="callout callout-warning calloutbg">
+                            <h5>ReportExpensiveTransport</h5>
+                            <p>รายงานค่าเดินทาง ผู้ใช้งานสามารถเลือกประเภทรถและวันที่ DOเริ่มต้น - DOสิ้นสุด
+                                จากนั้นกดค้นหา ข้อมูลรายงานมาจากการกดปุ่มเข้าไปทำรายการทำจ่ายค่าเดินทาง
+                            </p>
+                        </div>
+                        <form asp-action="Index" asp-controller="ReportExpensiveTransport">
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>                         
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label>Client</label>
+                                        <select asp-items="ViewBag.ClientList" class="form-control" name="client"
+                                            style="width: 100%;">
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label>ประเภทรถ</label>
+                                        <select asp-items="ViewBag.ShippingList" class="form-control" name="tuckType"
+                                            style="width: 100%;">
+                                            <option selected="selected">เลือกทั้งหมด</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label>วันที่สร้าง DO เริ่มต้น</label>
+                                        <br>
+                                        <input value=@ViewBag.StartDate type="date" class="form-control" name="startDate">
+                                    </div>
+                                </div>
+
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label>ถึงวันที่สร้าง DO สิ้นสุด</label>
+                                        <br>
+                                        <input value=@ViewBag.EndDate type="date" class="form-control" name="endDate">
+                                    </div>
+                                </div>
+
+
+                                <div class="col-md-2">
+                                    <div class="form-group">
+                                        <label></label>
+                                        <button type="submit" class="btn btn-block btn-info">ค้นหา</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="card-body">
+                        <div class="row container">
+                            <div class="col-md-2.501px">
+                                <div class="form-group">
+                                    <a asp-action="Index" asp-controller="CreateExpensiveTransport"
+                                        class="btn btn-success">
+                                        ทำจ่ายค่าเดินทาง
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="col-md-1">
+                                <div class="form-group">
+                                    <a asp-action="PrintPreview" asp-controller="ReportExpensiveTransport"
+                                        asp-route-tuckType="@ViewBag.TuckType" asp-route-startDate="@ViewBag.StartDate"
+                                        asp-route-endDate="@ViewBag.EndDate" asp-route-client="@ViewBag.Client"
+                                        class="btn btn-secondary" target="_blank">
+                                        Print
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <a asp-action="Index" asp-controller="ListExpensiveTransport"
+                                        class="btn btn-warning">
+                                        รายงานการทำจ่ายค่าเดินทาง
+                                    </a>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <div class="card-body  table-responsive p-0" style="height: *;">
+                                        <table class="table table-bordered text-wrap">
+                                            <table id="example" class="table  table-bordered">
+                                                <thead class="bg-thead">
+                                                    <tr>
+                                                        <th style="width: 80px" class="text-center">NO.</th>
+                                                        <th style="width: 180px" class="text-center">Client</th>
+                                                        <th style="width: 180px" class="text-center">CreateOn</th>
+                                                        <th style="width: 180px" class="text-center">DO</th>
+                                                        <th style="width: 180px" class="text-center">Sold To</th>
+                                                        <th style="width: 180px" class="text-center">Ship To</th>
+                                                        <th style="width: 180px" class="text-center">ทะเบียน</th>
+                                                        <th style="width: 180px" class="text-center">ประเภทรถ</th>
+                                                        <th style="width: 180px" class="text-center">ค่าเดินทาง</th>
+                                                        <th style="width: 180px" class="text-center">ค่าใช้จ่ายอื่นๆ
+                                                        </th>
+                                                        <th style="width: 180px" class="text-center">ราคารวม</th>
+                                                        <th style="width: 600px" class="text-center">แก้ไข/ลบ</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    @{
+                                                        int i = 1;
+                                                        foreach (var item in (ViewBag.ExpensiveTransportViewModel as
+                                                        IEnumerable<ExpensiveTransportViewModel>))
+                                                        {
+
+                                                            <tr>
+                                                                <td class="text-center">@i</td>
+                                                                <td class="text-center">@item.Client</td>
+                                                                <td class="text-center">@item.ActualGidateSap</td>
+                                                                <td class="text-center">@item.DoNumber</td>
+                                                                <td class="text-center">@item.SoldTo-@item.SoldToName</td>
+                                                                <td class="text-center">@item.EtshipTo-@item.EtshipToName</td>
+                                                                @if (!String.IsNullOrEmpty(@item.Transport))
+                                                                {
+                                                                    <td class="text-center">@item.Transport</td>
+                                                                }
+                                                                else
+                                                                {
+                                                                    <td class="text-center">-</td>
+                                                                }
+
+                                                                <td class="text-center">@item.ShippingType-@item.ShippingName
+                                                                </td>
+                                                                <td class="text-center">@item.Etmptprice</td>
+                                                                <td class="text-center">@item.Etcfprice</td>
+                                                                <td class="text-center">@item.Etamount</td>
+                                                                @if (@item.CheckBotton == "true")
+                                                                {
+
+                                                                    <td style="text-align: center">
+                                                                        <a asp-action="EditExpensiveTransport"
+                                                                asp-controller="EditExpensiveTransport"
+                                                                asp-route-EtautoId="@item.EtautoId"
+                                                                class="btn btn-info">
+                                                                            <div class="icon">
+                                                                                <i class="fas fa-edit"></i>
+                                                                            </div>
+                                                                        </a>
+                                                                        <a data-toggle="modal" data-target="#modal-Delete"
+                                                                    class="btn btn-danger" data-id1="@item.DoNumber">
+                                                                            <div class="icon">
+                                                                                <i class="fas fa-trash-alt"></i>
+                                                                            </div>
+                                                                        </a>
+                                                                    </td>
+                                                                }
+                                                                else
+                                                                {
+                                                                    <td class="text-center">-</td>
+                                                                }
+                                                            </tr>
+
+                                                            sumEtmptprice += Convert.ToDouble(item.Etmptprice);
+                                                            sumEtcfprice += Convert.ToDouble(item.Etcfprice);
+                                                            sumEtamount += Convert.ToDouble(item.Etamount);
+                                                            i++;
+                                                        }
+                                                    }
+
+                                                </tbody>
+                                                <tfoot>
+                                                    <tr>
+                                                        <th colspan="8" class="text-right">Total
+                                                        </th>
+                                                        <td class="text-center">@sumEtmptprice.ToString("N2")</td>
+                                                        <td class="text-center">@sumEtcfprice.ToString("N2")</td>
+                                                        <td class="text-center">@sumEtamount.ToString("N2")</td>
+                                                        <th class="text-right">บาท
+                                                        </th>
+                                                    </tr>
+
+                                                </tfoot>
+                                            </table>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="modal fade" id="modal-Delete" tabindex="-1" role="dialog" aria-labelledby="deleteconformation">
+            <div class="modal-dialog" style="width:501px !important;margin:0 auto;">
+                <div class="modal-content">
+                    <div class="modal-header" style="background:#d9534f;color:white;">
+                        <h4 class="modal-title" id="delete-conformation">
+                            ยืนยันการยกเลิกการทำจ่ายค่าเดินทาง
+                        </h4>
+                    </div>
+                    <form asp-action="Delete" asp-controller="ReportExpensiveTransport">
+                        <div class="modal-body">
+                            <div class="row" class="text-center">
+                                <div class="form-group">
+                                    <div class="col-sm-12">
+                                        <span>
+                                            DO
+                                        </span>
+                                        <input class="btn btn-xs btn-flat inputs" asp-for="DoNumber" type="text"
+                                            id="id1" readonly />
+                                        <input class="btn btn-xs btn-flat inputs" type="text" id="id2" readonly />
+                                        <input class="btn btn-xs btn-flat inputs" type="text" id="id3" readonly />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                                <button type="submit" class="btn btn-danger">Delete</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+    
+</body>

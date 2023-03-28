@@ -1,0 +1,213 @@
+@model ReportRefuelingViewmodel
+@{
+    
+   
+}
+
+@await Component.InvokeAsync("Notyf")
+
+<head>
+    <style>
+        .bg-thead {
+            text-align: left;
+            background: #990000;
+            color: #fff
+        }
+
+        .calloutbg {
+            text-align: left;
+            background: #990000;
+            color: #fff
+        }
+    </style>
+</head>
+
+<body class="hold-transition sidebar-mini >
+    <section class=" content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="callout callout-warning calloutbg">
+                            <h5>ReportOilChangeHistory</h5>
+                            <p>รายงานประวัติการเปลี่ยนถ่ายน้ำมันเครื่อง ข้อมูลที่นำมาแสดงมาจากโปรแกรม AP2022-004-TRNManagement (เมนูเปลี่ยนถ่ายน้ำมันเครื่อง)      
+                            </p>
+                        </div>
+                        <form asp-action="Index" asp-controller="ReportOilChangeHistory">
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label>ทะเบียนรถ</label>                                      
+                                        <select  asp-items="@ViewBag.MappingList" class="form-control select2" id="dropdown"  name="_assetId"
+                                            style="width: 100%;">
+                                            <option selected="selected">ทั้งหมด</option>
+                                        </select>                                      
+                                    </div>
+                                </div>
+                                 @* <div class="form-group">
+                                    <select asp-for="ThdAccountNum" class="form-control select2" id="dropdown" asp-items="ViewBag.BankHouseList">
+                                        <option selected="selected"></option>
+                                    </select>
+                                    <span asp-validation-for="ThdAccountNum" class="text-danger"></span>
+                                </div> *@
+                            </div>                           
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label>วันที่เริ่มต้น</label>
+                                        <br>
+                                        <input value=@ViewBag.StartDate type="date" class="form-control"
+                                            name="dStart">
+                                    </div>
+                                </div>
+
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label>ถึงวันที่สิ้นสุด</label>
+                                        <br>
+                                        <input value=@ViewBag.EndDate type="date" class="form-control" name="dEnd">
+                                    </div>
+                                </div>
+
+
+                                <div class="col-md-2">
+                                    <div class="form-group">
+                                        <label></label>
+                                        <button type="submit" class="btn btn-block btn-info">ค้นหา</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="card-body">                       
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <div class="card-body  table-responsive p-0" style="height: *;">
+                                        <table class="table table-bordered text-wrap">
+                                            <table id="example1" class="table  table-bordered">
+                                                <thead class="bg-thead">
+                                                    <tr>
+                                                        <th style="width: 80px" class="text-center">Doc No.</th>
+                                                        <th style="width: 180px" class="text-center">วันที่ทำรายการ</th>
+                                                        <th style="width: 180px" class="text-center">ทะเบียนรถ</th>
+                                                        <th style="width: 180px" class="text-center">Mile</th>
+                                                        <th style="width: 180px" class="text-center">ผู้ขับรถ</th>
+                                                        <th style="width: 180px" class="text-center">StationID</th>
+                                                        <th style="width: 180px" class="text-center">StationName</th>
+                                                        <th style="width: 180px" class="text-center">รูปภาพ</th>                                
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                @{
+                                                  
+                                                    foreach (var item in (ViewBag.ReportRefuelingViewmodel as 
+                                                    IEnumerable<ReportRefuelingViewmodel>))
+                                                    {
+                                                        <tr>
+                                                            <td class="text-center">@item.TrDocument</td>
+                                                            <td class="text-center">@item.timeString24Hour</td>
+                                                            <td class="text-center">@item.TrRegistration</td>
+                                                            <td class="text-center">@item.Mileage</td>
+                                                            <td class="text-center">@item.DriverFullName</td>
+                                                            <td class="text-center">@item.StationId</td>
+                                                            <td class="text-center">@item.StationName</td>
+                                                            <td class="text-center">
+                                                               @* <a data-toggle="modal" data-target="#modal-Search" 
+                                                               class="btn btn-info" data-id1= "@item.TrDocument">
+                                                                ดูรูปภาพ
+                                                               </a>  *@
+                                                               <a asp-action="ViewImages" 
+                                                               asp-controller="ReportRefueling"
+                                                               asp-route-TrDocument="@item.TrDocument"                                                           
+                                                               class="btn btn-info" target="_blank">
+                                                               ดูรูปภาพ                                                           
+                                                               </a>
+                                                            </td>
+                                                                                                                                                                       
+                                                        </tr>
+
+                                                       
+                                                    }
+                                                }
+
+                                                </tbody>
+                                               
+                                            </table>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>           
+    </div>   
+
+
+    <div class="modal fade" id="modal-Search">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">รูปภาพ</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                @* <form action="ViewImages" asp-controller="ReportRefueling">
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="form-group">
+                                <div class="col-md-12">
+                                    <label >hello</label>
+                                    <input class="btn btn-xs btn-flat inputs" asp-for="TrDocument" type="text"
+                                            id="id1" readonly />
+                                </div>
+                            </div>
+                        </div> 
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            </div>                     
+                    </div>
+                </form>  *@
+
+                <!-- Modal footer -->
+                
+              
+
+            </div>
+        </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"
+    integrity="sha512-2ImtlRlf2VVmiGZsjm9bEyhjGW4dU7B6TNwh/hx/iSByxNENtj3WVE6o/9Lj4TJeVXPi4bnOIMXFIJJAeufa0A=="
+    crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css"
+    integrity="sha512-nMNlpuaDPrqlEls3IX/Q56H36qvBASwb3ipuo3MxeWbsQB1881ox0cRv7UPTgBlriqoynt35KjEwgGUeUXIPnw=="
+    crossorigin="anonymous" />
+<style>
+    
+    .select2-selection__rendered {
+        line-height: 29px !important;
+        
+    }
+
+    .select2-container .select2-selection--single {
+        height: 35px !important;
+        width: 100%;
+    }
+
+    .select2-selection__arrow {
+        height: 34px !important;
+    }
+</style>
+<script>
+    $("#dropdown").select2({
+    });
+
+</script>
+</body>

@@ -1,0 +1,36 @@
+@model ImagesViewModel;
+@{
+ 
+}
+
+<div class="card">
+    
+    <!-- /.card-header -->
+    <div class="card-body">
+        <table id="example1" class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>รูปที่</th>                  
+                    <th>รูป</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in (ViewBag.ImagesViewModel as IEnumerable<ImagesViewModel>))
+                {                                   
+                    <tr>
+                        <td>@item.cImg</td>                 
+                        <td>
+                            <a asp-action="SelectImage" asp-controller="ReportRefueling" asp-route-stfAutoId="@item.stfAutoId" asp-route-TrDocument="@item.TrDocument" target="_blank">
+                                <img src="data:image/jpeg;base64,@item.stfStreamId" alt="CCP" height="150" width="150" >
+                            </a>
+                        </td>
+                    </tr>                  
+
+                }
+            </tbody>
+        </table>
+
+    </div>
+    <!-- /.card-body -->
+</div>

@@ -1,0 +1,159 @@
+@model MappingViewModel
+@{
+
+
+}
+
+@await Component.InvokeAsync("Notyf")
+
+<head>
+    <style>
+        .bg-thead {
+            text-align: left;
+            background: #990000;
+            color: #fff
+        }
+
+        .calloutbg {
+            text-align: left;
+            background: #990000;
+            color: #fff
+        }
+    </style>
+</head>
+
+<body class="hold-transition sidebar-mini >
+    <section class=" content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="callout callout-warning calloutbg">
+                            <h5>MappingAssetAndDTC</h5>
+                            <p>แสดงข้อมูลที่จับคู่ AssetID คือ QRCode ที่อยู่บนรถแต่ละคันของทาง CCP และ GPSID ของทาง DTC สามารถลบและเพิ่มการจับคู่ได้
+                            </p>
+                        </div>
+                        <div class="col-md-2.501px">
+                            <div class="form-group">
+                                <a asp-action="Create" asp-controller="MappingAsDTC" class="btn btn-success" target="_blank">
+                                    เพิ่ม
+                                </a>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <div class="card-body  table-responsive p-0" style="height: *;">
+                                        <table class="table table-bordered text-wrap">
+                                            <table id="example3" class="table  table-bordered">
+                                                <thead class="bg-thead">
+                                                    <tr>
+                                                        <th style="width: 180px" class="text-center">AssetID [iGraud]</th>
+                                                        <th style="width: 180px" class="text-center">GPSID [DTC]</th>
+                                                        <th style="width: 180px" class="text-center">ลบ</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    @{
+                                                        foreach (var item in (ViewBag.MappingViewModel as
+                                                        IEnumerable<MappingViewModel>))
+                                                        {
+                                                            <tr>
+                                                                <td class="text-center">@item.AssetId</td>
+                                                                <td class="text-center">@item.Madgpsid</td>
+                                                                <td class="text-center">
+                                                                    <a data-toggle="modal" data-target="#modal-Delete"
+                                                                        class="btn btn-danger" data-id1="@item.AssetId"
+                                                                        data-id2="@item.Madgpsid">
+                                                                        <div class="icon">
+                                                                            <i class="fas fa-trash-alt"></i>
+                                                                        </div>
+                                                                    </a>
+                                                                </td>
+                                                            </tr>
+                                                        }
+                                                    }
+
+                                                </tbody>
+                                            </table>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="modal-Delete" tabindex="-1" role="dialog" aria-labelledby="deleteconformation">
+            <div class="modal-dialog" style="width:501px !important;margin:0 auto;">
+                <div class="modal-content">
+                    <div class="modal-header" style="background:#d9534f;color:white;">
+                        <h4 class="modal-title" id="delete-conformation">
+                            ยืนยันการลบ
+                        </h4>
+                    </div>
+                    <form asp-action="Delete" asp-controller="MappingAsDTC">
+                        <div class="modal-body">
+                            <div class="row" class="text-center">
+                                <div class="form-group">
+                                    <div class="col-sm-12">
+                                        <span>
+                                            AssetID [iGraud] :
+                                        </span>
+                                        <input class="btn btn-xs btn-flat inputs" asp-for="AssetId" type="text"
+                                            id="id1" readonly />
+                                            <br>
+                                        <span>
+                                            GPSID [DTC] :
+                                        </span>
+                                        <input class="btn btn-xs btn-flat inputs" type="text" asp-for="Madgpsid" id="id2" readonly />
+                                        <input class="btn btn-xs btn-flat inputs" type="text" id="id3" readonly />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                                <button type="submit" class="btn btn-danger">Delete</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"
+        integrity="sha512-2ImtlRlf2VVmiGZsjm9bEyhjGW4dU7B6TNwh/hx/iSByxNENtj3WVE6o/9Lj4TJeVXPi4bnOIMXFIJJAeufa0A=="
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css"
+        integrity="sha512-nMNlpuaDPrqlEls3IX/Q56H36qvBASwb3ipuo3MxeWbsQB1881ox0cRv7UPTgBlriqoynt35KjEwgGUeUXIPnw=="
+        crossorigin="anonymous" />
+    <style>
+        .select2-selection__rendered {
+            line-height: 29px !important;
+
+        }
+
+        .select2-container .select2-selection--single {
+            height: 35px !important;
+            width: 100%;
+        }
+
+        .select2-selection__arrow {
+            height: 34px !important;
+        }
+    </style>
+    <script>
+        $("#dropdown").select2({
+        });
+
+    </script>
+</body>

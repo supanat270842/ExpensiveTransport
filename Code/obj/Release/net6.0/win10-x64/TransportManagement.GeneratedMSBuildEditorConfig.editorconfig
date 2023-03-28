@@ -1,0 +1,140 @@
+is_global = true
+build_property.TargetFramework = net6.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = TransportManagement
+build_property.RootNamespace = TransportManagement
+build_property.ProjectDir = D:\GitHub\TransportManagement\
+build_property.RazorLangVersion = 6.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = D:\GitHub\TransportManagement
+build_property._RazorSourceGeneratorDebug = 
+
+[D:/GitHub/TransportManagement/Views/Account/ErrorForbidden.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxFcnJvckZvcmJpZGRlbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/GitHub/TransportManagement/Views/Account/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/GitHub/TransportManagement/Views/Account/Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxMb2dpbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/GitHub/TransportManagement/Views/CreateExpensiveTransport/CheckData.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3JlYXRlRXhwZW5zaXZlVHJhbnNwb3J0XENoZWNrRGF0YS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/GitHub/TransportManagement/Views/CreateExpensiveTransport/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3JlYXRlRXhwZW5zaXZlVHJhbnNwb3J0XEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/GitHub/TransportManagement/Views/CreateExpensiveTransport/InsertDO.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3JlYXRlRXhwZW5zaXZlVHJhbnNwb3J0XEluc2VydERPLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/GitHub/TransportManagement/Views/CreateExpensiveTransport/SelectShipTo.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3JlYXRlRXhwZW5zaXZlVHJhbnNwb3J0XFNlbGVjdFNoaXBUby5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/GitHub/TransportManagement/Views/EditExpensiveTransport/EditExpensiveTransport.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRWRpdEV4cGVuc2l2ZVRyYW5zcG9ydFxFZGl0RXhwZW5zaXZlVHJhbnNwb3J0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/GitHub/TransportManagement/Views/EditExpensiveTransport/EditExpensiveTransport1.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRWRpdEV4cGVuc2l2ZVRyYW5zcG9ydFxFZGl0RXhwZW5zaXZlVHJhbnNwb3J0MS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/GitHub/TransportManagement/Views/EditExpensiveTransport/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRWRpdEV4cGVuc2l2ZVRyYW5zcG9ydFxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/GitHub/TransportManagement/Views/Error/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXJyb3JcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/GitHub/TransportManagement/Views/Home/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/GitHub/TransportManagement/Views/ListExpensiveTransport/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTGlzdEV4cGVuc2l2ZVRyYW5zcG9ydFxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/GitHub/TransportManagement/Views/ListExpensiveTransport/PrintPreView.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTGlzdEV4cGVuc2l2ZVRyYW5zcG9ydFxQcmludFByZVZpZXcuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/GitHub/TransportManagement/Views/MappingAsDTC/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWFwcGluZ0FzRFRDXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/GitHub/TransportManagement/Views/MappingAsDTC/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWFwcGluZ0FzRFRDXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/GitHub/TransportManagement/Views/ReportExpensiveTransport/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVwb3J0RXhwZW5zaXZlVHJhbnNwb3J0XEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/GitHub/TransportManagement/Views/ReportExpensiveTransport/PrintPreview.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVwb3J0RXhwZW5zaXZlVHJhbnNwb3J0XFByaW50UHJldmlldy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/GitHub/TransportManagement/Views/ReportOilChangeHistory/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVwb3J0T2lsQ2hhbmdlSGlzdG9yeVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/GitHub/TransportManagement/Views/ReportOilChangeHistory/SelectImage.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVwb3J0T2lsQ2hhbmdlSGlzdG9yeVxTZWxlY3RJbWFnZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/GitHub/TransportManagement/Views/ReportOilChangeHistory/ViewImages.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVwb3J0T2lsQ2hhbmdlSGlzdG9yeVxWaWV3SW1hZ2VzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/GitHub/TransportManagement/Views/ReportRefueling/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVwb3J0UmVmdWVsaW5nXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/GitHub/TransportManagement/Views/ReportRefueling/SelectImage.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVwb3J0UmVmdWVsaW5nXFNlbGVjdEltYWdlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/GitHub/TransportManagement/Views/ReportRefueling/ViewImages.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVwb3J0UmVmdWVsaW5nXFZpZXdJbWFnZXMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/GitHub/TransportManagement/Views/Shared/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/GitHub/TransportManagement/Views/Shared/_Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9Mb2dpbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/GitHub/TransportManagement/Views/Shared/_Main.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9NYWluLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/GitHub/TransportManagement/Views/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/GitHub/TransportManagement/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/GitHub/TransportManagement/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/GitHub/TransportManagement/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-si3kpcm026

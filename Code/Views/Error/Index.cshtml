@@ -1,0 +1,10 @@
+@{
+   Layout = "_Main";
+}
+@await Component.InvokeAsync("Notyf")
+<div class="row">
+    <div class="col-md-12 text-center">
+        <h4 class="text-Gray Dark" style="margin-top:90px" class="display-6">@ViewBag.ErrorData</h4>
+        <br />
+    </div>
+</div>

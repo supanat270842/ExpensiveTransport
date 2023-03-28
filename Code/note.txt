@@ -1,0 +1,4 @@
+dotnet publish -c Release -r win10-x64 -o Build
+
+
+"Server=192.168.0.99;Database=TransportCCPCPS;User Id=sa;Password=dogthaiP@ssw0rd"

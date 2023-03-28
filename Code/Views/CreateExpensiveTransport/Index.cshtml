@@ -1,0 +1,76 @@
+@model CreateExpensiveTransportViewModel
+@{
+
+}
+
+@await Component.InvokeAsync("Notyf")
+
+<head>
+    <style>
+        .bg-thead {
+            text-align: left;
+            background: #990000;
+            color: #fff
+        }
+
+        .calloutbg {
+            text-align: left;
+            background: #990000;
+            color: #fff
+        }
+    </style>
+</head>
+
+<body class="hold-transition sidebar-mini >
+    <section class=" content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="callout callout-warning calloutbg">
+                            <h5>CreateExpensiveTransport</h5>
+                            <p>ผู้ใช้งานสามารถทำรายการทำจ่ายโดยการกรอกเลข DO และกดค้นหาข้อมูล
+                                ระบบจะไปดึงข้อมูลมาจาก SAP และโปรแกรมจัดรถขนส่ง สามารถแก้ไข TransportZone ได้
+                                เมื่อทำการบันทึกรายการจะไปอยู่ที่หน้ารายงานค่าเดินทาง
+                                หากจะแก้ไขรายการที่ทำไปแล้วให้ไปกดปุ่มแก้ไขที่รายการนั้นหน้ารายงานค่าเดินทาง
+                            </p>
+                        </div>
+                        <form asp-action="InsertDO" asp-controller="CreateExpensiveTransport">
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label>Client</label>
+                                        <select asp-items="ViewBag.ClientList" class="form-control" name="client"
+                                            style="width: 100%;">
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label>กรุณากรอกเลข DO</label>
+                                        <input asp-for="DoNumber" type="text" class="form-control"
+                                            placeholder="DoNumber"></input>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="form-group">
+                                        <label> </label>
+                                        <button  type="submit"
+                                            class="btn btn-block btn-info"></a>ค้นหา
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</body>
